@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Birthday.exe 💗</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Segoe UI,sans-serif;background:#080812;color:#fff;overflow-x:hidden}
+.screen{display:none;min-height:100vh;padding:24px;align-items:center;justify-content:center;flex-direction:column;text-align:center}
+.screen.active{display:flex;animation:fade .8s ease}
+@keyframes fade{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
+.terminal{width:min(100%,600px);background:#10101b;border:1px solid #38384e;border-radius:16px;padding:24px;text-align:left;font-family:monospace;line-height:2;color:#8dffad;box-shadow:0 0 40px #9d4edd33}
+.terminal-head{color:#aaa;border-bottom:1px solid #333;padding-bottom:10px;margin-bottom:12px}
+.cursor{animation:blink .7s infinite}@keyframes blink{50%{opacity:0}}
+.btn{border:0;border-radius:30px;padding:14px 26px;margin-top:25px;background:linear-gradient(135deg,#a855f7,#ec4899);color:white;font-weight:700;font-size:16px;cursor:pointer;box-shadow:0 8px 30px #ec489944}
+.gift{font-size:125px;margin:30px;cursor:pointer;animation:bounce 1.4s infinite;filter:drop-shadow(0 0 25px #f0abfc)}
+@keyframes bounce{50%{transform:translateY(-14px) rotate(4deg)}}
+h1{font-size:clamp(2.1rem,8vw,4.4rem);line-height:1.15;margin:15px 0}
+.sub{max-width:600px;color:#c9c2d8;line-height:1.7}
+.gradient{background:linear-gradient(90deg,#f9a8d4,#c4b5fd,#fef08a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cake{font-size:105px;margin:22px;animation:pop .8s ease}@keyframes pop{0%{transform:scale(0)}80%{transform:scale(1.15)}100%{transform:scale(1)}}
+.message{width:min(100%,700px);margin-top:20px;padding:24px;background:#ffffff0b;border:1px solid #ffffff1f;border-radius:18px;text-align:left;line-height:1.9;color:#f4eaff;white-space:pre-line;min-height:180px}
+.confetti{position:fixed;top:-30px;z-index:20;animation:fall 4s linear forwards;pointer-events:none}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+.music-note{position:fixed;right:16px;top:16px;z-index:50;background:#ffffff12;border:1px solid #ffffff25;border-radius:22px;padding:9px 13px;color:#fff;font-size:13px;backdrop-filter:blur(8px)}
+.heart{position:fixed;bottom:-30px;z-index:5;animation:heart 5s linear forwards;pointer-events:none}
+@keyframes heart{to{transform:translateY(-110vh) rotate(360deg);opacity:0}}
+@media(max-width:500px){.terminal{font-size:13px;padding:18px}.gift{font-size:100px}.cake{font-size:82px}.message{font-size:14px;padding:18px}}
+</style>
+</head>
+<body>
+<div class="music-note" id="musicStatus">🎵 Birthday Music: OFF</div>
+<section class="screen active" id="intro">
+<div class="terminal"><div class="terminal-head">● ● ● &nbsp; Birthday.exe</div><div id="terminalText"></div><span class="cursor">█</span></div>
+<button class="btn" id="continueBtn" style="display:none" onclick="show('gift')">Continue ❤️</button>
+</section>
+
+<section class="screen" id="gift">
+<p class="sub">A special surprise has been prepared for you...</p>
+<h1>Hey, Bestie! 💗</h1>
+<div class="gift" onclick="show('birthday')">🎁</div>
+<p class="sub">Tap the gift to open your surprise!</p>
+<button class="btn" onclick="show('birthday')">OPEN YOUR GIFT 🎀</button>
+</section>
+
+<section class="screen" id="birthday">
+<h1 class="gradient">HAPPY BIRTHDAY! 🥳</h1>
+<p class="sub">To my dear bestie — wishing you a beautiful year ahead. ✨</p>
+<div class="cake">🎂</div>
+<p style="font-size:20px">Make a wish! ✨💖</p>
+<button class="btn" onclick="show('favorites')">A Few Things About You ✨</button>
+</section>
+
+
+<section class="screen" id="favorites">
+<h1 class="gradient">A Few Things About You ✨</h1>
+<p class="sub">Because a birthday website should have a few things that are actually <em>you</em>. 😌💗</p>
+<div class="message" style="text-align:center">
+<p>💍 <strong>Rings</strong><br>Apparently, rings have a special place in your heart. 💖</p><br>
+<p>🇯🇵 <strong>Japan</strong><br>One day… Japan won't just be a dream. ✈️🇯🇵</p><br>
+<p>🌍 <strong>Travelling</strong><br>You love travelling and exploring new places, even if you don't get to travel as much as you'd like.</p><br>
+<p>🍔🍦 <strong>Food</strong><br>Outside food = burgers + ice cream. Honestly, solid choices. 😂</p><br>
+<p>📱 <strong>Phone</strong><br>Professional phone scroller. Whole day? Obviously. 😭📱</p><br>
+<p>📚 <strong>Studies</strong><br>Aur ache se padai karna hai iss saal tumhe... thik hai. 😭📚</p>
+</div>
+<div class="message" style="text-align:center">
+<h2 style="color:#f9a8d4;margin-bottom:12px"> A Dream Called Japan</h2>
+<p style="line-height:1.9">I hope one day you get to pack your bags, explore Japan, try all the food you've been wanting to try, and make all those travel memories you've imagined. ✈️🇯🇵</p>
+<p style="margin-top:14px">I really hope you get there someday. ❤️</p>
+</div>
+<p class="sub" style="margin-top:18px">Until then… keep dreaming, keep scrolling 😂, keep eating burgers & ice cream, and please study sometimes. 😭📚</p>
+<button class="btn" onclick="show('message')">There's More 💌</button>
+</section>
+
+<section class="screen" id="message">
+<h1 class="gradient">A Little Message For You 💌</h1>
+<div class="message" id="messageText"></div>
+<button class="btn" onclick="show('final')">One Last Thing ❤️</button>
+</section>
+
+<section class="screen" id="final">
+<div style="font-size:90px">🫂❤️</div>
+<h1 class="gradient">Stay Happy Always!</h1>
+<p class="sub">Your stupid best friend<br>will always be there for you. 🥹</p>
+<p style="margin-top:24px;color:#f9a8d4">Made with ❤️ and a little bit of code.</p>
+<p style="margin-top:12px;color:#fef08a;font-weight:700;font-size:18px">Made by your bestu Noman ❤️</p>
+<button class="btn" onclick="location.reload()">Replay Surprise 🔁</button>
+</section>
+
+<script>
+const message=`Happy Birthdayyy! 🥳❤️
+
+Ek aur saal badi ho gayi bandariya 😂
+Bas aise hi hamesha khush rehna, haste rehna aur apni stupid si harkatein kabhi mat badalna. 😭😂
+
+I hope iss saal tumhari saari wishes puri ho, especially woh Japan wala dream ✈️. Aur haan, burgers aur ice cream ka quota bhi pura hona chahiye. 😂🍔🍦
+
+Life me chahe kitna bhi kuch change ho jaye, bas ek cheez same rehni chahiye — teri pagalpan wali vibe. 😂❤️
+
+Enjoy your day, bandariya! 🎂✨
+Happy Birthday once again! `;
+
+const lines=["> Initializing Birthday.exe...","> Loading a special surprise...","> Searching for the most amazing person...","> Person found: Bestie","> Preparing happiness and lots of love...","> System ready! ❤️"];
+let li=0,ci=0;
+function typeTerminal(){
+ if(li>=lines.length){continueBtn.style.display="inline-block";return}
+ if(ci<lines[li].length){terminalText.innerHTML+=lines[li][ci++];setTimeout(typeTerminal,42)}
+ else{terminalText.innerHTML+="<br>";li++;ci=0;setTimeout(typeTerminal,350)}
+}
+typeTerminal();
+
+function show(id){
+ document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+ if(id==="birthday"){confetti();hearts();startBirthdayMusic()}
+ if(id==="message")typeMessage();
+}
+let typed=false;
+function typeMessage(){
+ if(typed)return;typed=true;let i=0;
+ function write(){if(i<message.length){messageText.textContent+=message[i++];setTimeout(write,18)}}
+ write();
+}
+function confetti(){
+ const s=["🎉","💖","✨","🌸","💕","🎊"];
+ for(let i=0;i<70;i++){
+  const x=document.createElement("div");x.className="confetti";x.textContent=s[Math.floor(Math.random()*s.length)];
+  x.style.left=Math.random()*100+"vw";x.style.animationDelay=Math.random()*1.8+"s";x.style.fontSize=12+Math.random()*16+"px";
+  document.body.appendChild(x);setTimeout(()=>x.remove(),6000);
+ }
+}
+function hearts(){
+ setInterval(()=>{
+  const h=document.createElement("div");h.className="heart";h.textContent=["💗","💖","💕","💜"][Math.floor(Math.random()*4)];
+  h.style.left=Math.random()*100+"vw";document.body.appendChild(h);setTimeout(()=>h.remove(),5000);
+ },700);
+}
+
+let audioCtx = null;
+let musicTimer = null;
+let musicStarted = false;
+
+function startBirthdayMusic(){
+  if(musicStarted) return;
+  musicStarted = true;
+
+  try{
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    // Simple cheerful birthday-style melody made with Web Audio.
+    const notes = [
+      [261.63,0.00,0.28],[261.63,0.32,0.28],[293.66,0.64,0.45],
+      [261.63,1.14,0.45],[349.23,1.64,0.45],[329.63,2.14,0.65],
+      [261.63,2.95,0.28],[261.63,3.27,0.28],[293.66,3.59,0.45],
+      [261.63,4.09,0.45],[392.00,4.59,0.45],[349.23,5.09,0.65],
+      [261.63,5.90,0.28],[261.63,6.22,0.28],[523.25,6.54,0.45],
+      [440.00,7.04,0.45],[349.23,7.54,0.45],[329.63,8.04,0.45],
+      [293.66,8.54,0.65]
+    ];
+
+    const playMelody = () => {
+      if(!audioCtx) return;
+      const now = audioCtx.currentTime + 0.05;
+
+      notes.forEach(([freq,start,duration])=>{
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+
+        osc.type = "sine";
+        osc.frequency.value = freq;
+
+        gain.gain.setValueAtTime(0.0001, now + start);
+        gain.gain.exponentialRampToValueAtTime(0.11, now + start + 0.03);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + start + duration);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.start(now + start);
+        osc.stop(now + start + duration + 0.03);
+      });
+    };
+
+    playMelody();
+    musicTimer = setInterval(playMelody, 9500);
+
+    document.getElementById("musicStatus").textContent = "🎵 Birthday Music: ON";
+  }catch(e){
+    document.getElementById("musicStatus").textContent = "🎵 Music unavailable";
+  }
+}
+
+</script>
+</body>
+</html>
